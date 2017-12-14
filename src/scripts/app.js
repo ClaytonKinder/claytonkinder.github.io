@@ -10,6 +10,7 @@ let skillsBlocks = document.querySelectorAll('.skills-grid .columns .column .ski
 let projectsBlocks = document.querySelectorAll('.projects-grid .columns .projects-grid-block');
 let details = document.querySelector('.details');
 let scrolled = false;
+let headerHeight = 40;
 
 (function () {
     if ( typeof NodeList.prototype.forEach === "function" ) return false;
@@ -54,7 +55,7 @@ function watchNav() {
     dataMobileColor.forEach(e => {
       let topDistance = getCoords(e).top;
       let prevColor = 'transparent';
-      if ( (topDistance) < scrollTop ) {
+      if ( (topDistance - headerHeight) < scrollTop ) {
         header.classList.remove('transparent', 'red', 'blue');
         header.classList.add(e.getAttribute('data-mobile-color'));
       }
@@ -64,7 +65,7 @@ function watchNav() {
     dataColor.forEach(e => {
       let topDistance = getCoords(e).top;
       let prevColor = '#fff';
-      if ( (topDistance) < scrollTop ) {
+      if ( (topDistance - headerHeight) < scrollTop ) {
           navLinks.forEach(a => {
             a.style.color = e.getAttribute('data-color');
           });
