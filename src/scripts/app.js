@@ -65,7 +65,7 @@ function watchNav() {
     dataColor.forEach(e => {
       let topDistance = getCoords(e).top;
       let prevColor = '#fff';
-      if ( (topDistance - headerHeight) < scrollTop ) {
+      if ( (topDistance) < scrollTop ) {
           navLinks.forEach(a => {
             a.style.color = e.getAttribute('data-color');
           });
