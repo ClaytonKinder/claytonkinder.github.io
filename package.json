@@ -5,9 +5,7 @@
   "scripts": {
     "build": "webpack --config webpack-prod.config.js --colors",
     "dev": "webpack-dev-server --open --config webpack-dev.config.js --watch --colors",
-    "deploy-all": "npm run build && git add . && git commit -am 'Building.' && git push",
-    "deploy-dist": "cd ./$npm_package_config_path/dist && git add . && git commit -am 'Building.' && git push",
-    "deploy": "npm run deploy-all && npm run deploy-dist"
+    "deploy": "git add . && git commit -am 'Deploying.' && git push && push-dir --dir=dist --branch=master"
   },
   "repository": {
     "type": "git",

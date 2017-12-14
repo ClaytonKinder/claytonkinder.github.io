@@ -167,4 +167,15 @@
       width: 80%;
     }
   }
+  section.skills {
+    .skills-grid {
+      .column {
+        .skills-grid-block {
+          span {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+  }
 }
