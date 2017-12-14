@@ -1,0 +1,73 @@
+section.skills {
+  background-color: $white;
+  position: relative;
+  padding-bottom: 15rem;
+
+  &:before {
+    display:block;
+    position:absolute;
+    content:'';
+    right: 0;
+    left: 0;
+    z-index: 10;
+    display: block;
+    height: 90px;
+    background-size: 50px 100%;
+    top: -90px;
+    background-image: -webkit-gradient(linear, 0 0, 300% 100%, color-stop(0.25, transparent), color-stop(0.25, $white));
+    background-image:
+    linear-gradient(315deg, $white 25%, transparent 25%),
+    linear-gradient( 45deg, $white 25%, transparent 25%);
+    background-position: 50%;
+  }
+
+  .skills-grid {
+    .column {
+      margin-bottom: 1rem;
+
+      .skills-grid-block {
+        opacity: 0;
+        transform: translateY(3rem);
+        position: relative;
+        transition: all 0.2s;
+        background-color: $primary-red;
+        border: 5px solid $primary-red;
+        padding: 2.5rem 2rem;
+        color: $primary-red;
+        @include flexbox(column, center, center);
+
+        &.in-viewport {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        svg {
+          transition: all 0.2s;
+          height: 64px;
+          width: 64px;
+        }
+
+        span {
+          font-size: 1.25rem;
+          transition: all 0.2s;
+          opacity: 0;
+        }
+
+        &:hover {
+          background-color: $white;
+          svg {
+            transform: translateY(-1rem);
+
+            path {
+              fill: $primary-red;
+            }
+          }
+          span {
+            opacity: 1;
+            transform: translateY(1.75rem);
+          }
+        }
+      }
+    }
+  }
+}

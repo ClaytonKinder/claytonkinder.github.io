@@ -1,0 +1,19 @@
+// External stylesheets
+@import '~spectre.css/dist/spectre.min.css';
+
+// Configuration stylesheets
+@import 'config/variables';
+@import 'config/animations';
+@import 'config/utilities';
+@import 'config/mixins';
+@import 'config/main';
+
+// Page section stylesheets
+@import 'sections/header';
+@import 'sections/hero';
+@import 'sections/intro';
+@import 'sections/skills';
+@import 'sections/projects';
+@import 'sections/contact';
+@import 'sections/footer';
+@import 'config/queries';

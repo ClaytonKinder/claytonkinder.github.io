@@ -1,0 +1,68 @@
+header {
+  height: 2rem;
+  z-index: 999;
+  border-bottom: 2px solid transparent;
+  transform: translateZ(0);
+
+  &.transparent {
+    background-color: transparent;
+    border-color: transparent;
+    .container {
+      nav {
+        & > a {
+          color: $white !important;
+        }
+      }
+    }
+  }
+
+  &.red {
+    background-color: $white;
+    border-color: $primary-red;
+    .container {
+      nav {
+        & > a {
+          color: $primary-red !important;
+
+          &:hover {
+            background-color: $primary-red;
+          }
+        }
+      }
+    }
+  }
+
+  &.blue {
+    background-color: $white;
+    border-color: $primary-blue;
+    .container {
+      nav {
+        & > a {
+          color: $primary-blue !important;
+
+          &:hover {
+            background-color: $primary-blue;
+          }
+        }
+      }
+    }
+  }
+
+  .container {
+    height: 100%;
+
+    nav {
+      & > a {
+        color: $white;
+        @include flexbox(row, center, center);
+        text-transform: uppercase;
+        font-weight: bolder;
+
+        &:hover {
+          color: $white !important;
+          background-color: $primary-red;
+        }
+      }
+    }
+  }
+}

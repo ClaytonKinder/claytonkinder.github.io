@@ -1,0 +1,15 @@
+footer {
+  height: 200px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: $primary-red;
+  padding: 2rem 0.25rem;
+  @include flexbox(column, center, center);
+  color: $white;
+
+  .copyright {
+    font-size: 0.75rem;
+    color: darken($white, 20%);
+  }
+}

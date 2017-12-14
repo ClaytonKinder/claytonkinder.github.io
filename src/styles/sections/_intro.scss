@@ -1,0 +1,19 @@
+section.intro {
+  min-height: 90vh;
+  background-color: $primary-red;
+  @include flexbox(row, center, flex-start);
+
+  .intro-card {
+    transform: translateY(-75px) translate3d(0,0,0) translateZ(0.1px);
+    backface-visibility: hidden;
+    perspective: 1000;
+    transform-style: preserve-3d;
+    max-width: 700px;
+    width: 92.5%;
+    background-color: $white;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    z-index: 100;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  }
+}
