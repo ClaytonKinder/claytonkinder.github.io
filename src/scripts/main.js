@@ -45,7 +45,9 @@
             this.initEvents();
         }
         initEvents() {
-            this.DOM.close.addEventListener('click', () => this.isZoomed ? this.zoomOut() : this.close());
+            this.DOM.close.addEventListener('click', () => {
+              this.isZoomed ? this.zoomOut() : this.close();
+            });
             this.DOM.magnifier.addEventListener('click', () => this.zoomIn());
         }
         fill(info) {
@@ -251,7 +253,7 @@
             this.isZoomed = false;
 
             anime({
-                targets: [this.DOM.title, this.DOM.links,, this.DOM.techs, this.DOM.description, this.DOM.magnifier],
+                targets: [this.DOM.title, this.DOM.links, this.DOM.techs, this.DOM.description, this.DOM.magnifier],
                 duration: 250,
                 easing: 'easeOutCubic',
                 translateY: 0,
@@ -278,7 +280,13 @@
                 duration: 250,
                 easing: 'easeInOutCubic',
                 scale: 1,
-                rotate: 0
+                rotate: 0,
+                begin: () => {
+                  this.DOM.close.style.pointerEvents = 'none';
+                },
+                complete: () => {
+                  this.DOM.close.style.pointerEvents = 'auto';
+                }
             });
         }
     };
