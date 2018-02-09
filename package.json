@@ -1,7 +1,7 @@
 {
   "name": "ck-portfolio",
   "version": "1.0.0",
-  "description": "A website I built to strut my stuff. Built with SASS and ol' fashioned vanilla JavaScript.",
+  "description": "A website I built to strut my stuff. Built with SASS and good ol' fashioned vanilla JavaScript.",
   "scripts": {
     "build": "webpack --config webpack-prod.config.js --colors",
     "dev": "webpack-dev-server --open --config webpack-dev.config.js --watch --colors",
