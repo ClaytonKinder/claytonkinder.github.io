@@ -5,6 +5,11 @@
   font-family: 'Roboto', 'Open-Sans', sans-serif;
 }
 
+html,
+body {
+	overflow-x: hidden;
+}
+
 body {
 	margin: 0 !important;
   padding: 0 !important;
