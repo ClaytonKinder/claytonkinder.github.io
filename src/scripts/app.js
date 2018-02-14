@@ -11,6 +11,7 @@ let projectsBlocks = document.querySelectorAll('.projects-grid .columns .project
 let details = document.querySelector('.details');
 let scrolled = false;
 let headerHeight = 40;
+var lastScrollTop = 0;
 
 (function () {
     if ( typeof NodeList.prototype.forEach === "function" ) return false;
@@ -51,6 +52,8 @@ function getCoords(elem) {
 
 function watchNav() {
   var scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+  var scrollingDown = (scrollTop > lastScrollTop);
+  lastScrollTop = scrollTop;
   if (isMobile()) {
     dataMobileColor.forEach(e => {
       let topDistance = getCoords(e).top;
@@ -64,15 +67,12 @@ function watchNav() {
     header.classList.remove('transparent', 'red', 'blue');
     dataColor.forEach(e => {
       let topDistance = getCoords(e).top;
-      let prevColor = '#fff';
-      if ( (topDistance) < scrollTop ) {
-          navLinks.forEach(a => {
-            a.style.color = e.getAttribute('data-color');
-          });
-          prevColor = e.getAttribute('data-color');
-      } else {
+      if (
+        scrollTop > topDistance &&
+        scrollTop < topDistance + e.offsetHeight
+      ) {
         navLinks.forEach(a => {
-          a.style.color = prevColor;
+          a.style.color = e.getAttribute('data-color') || 'white';
         });
       }
     });
@@ -128,13 +128,13 @@ window.addEventListener('touchmove', function() {
 window.addEventListener('scroll', function() {
   scrolled = true;
   watchIntroCard();
+  watchNav();
   details.height = window.innerHeight;
 });
 
 setInterval(function() {
     if(scrolled) {
       scrolled = false;
-      watchNav();
       watchSkillsBlocks();
       watchProjectsBlocks();
     }
