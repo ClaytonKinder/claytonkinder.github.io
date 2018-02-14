@@ -10,17 +10,8 @@ body {
 	overflow-x: hidden;
 }
 
-body {
-	margin: 0 !important;
-  padding: 0 !important;
-	transition: opacity 0.2s;
-  color: $text-primary;
-
-  &.loaded {
-		opacity: 1 !important;
-  }
-
-  &.details-open {
+html {
+	&.details-open {
 		height: 100%;
   	overflow: hidden;
     header {
@@ -33,6 +24,17 @@ body {
 			background: $primary-blue;
 		}
 	}
+}
+
+body {
+	margin: 0 !important;
+  padding: 0 !important;
+	transition: opacity 0.2s;
+  color: $text-primary;
+
+  &.loaded {
+		opacity: 1 !important;
+  }
 }
 
 .top-screen {

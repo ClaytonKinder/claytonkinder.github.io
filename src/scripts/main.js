@@ -152,7 +152,7 @@
         close() {
             if ( this.isAnimating ) return false;
             this.isAnimating = true;
-            document.body.classList.remove('details-open');
+            document.querySelector('html').classList.remove('details-open');
             this.DOM.details.classList.remove('details-open');
 
             anime({
@@ -315,7 +315,7 @@
             });
         }
         open() {
-            document.body.classList.add('details-open');
+            document.querySelector('html').classList.add('details-open');
             DOM.details.fill(this.info);
             DOM.details.open({
                 productBg: this.DOM.projectBg,

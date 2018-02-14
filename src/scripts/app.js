@@ -148,7 +148,6 @@ navLinks.forEach(e => {
   e.addEventListener('click', () => {
     let ele = document.querySelector(e.getAttribute('data-scroll'));
     ele.scrollIntoView({behavior: 'smooth', block: 'start'});
-    e.blur();
   });
 });
 
