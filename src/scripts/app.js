@@ -78,7 +78,6 @@ function watchNav() {
 
 function watchIntroCard() {
   var targetHeight = introCard.offsetHeight;
-  var distanceBetween = introCard.offsetHeight - intro.offsetHeight;
   var scrollPercent = (targetHeight - window.scrollY) / targetHeight;
   var scrollPercentReverse = (100 - (100 * scrollPercent)) / 100;
   if (scrollPercent >= 0) {
@@ -130,11 +129,11 @@ window.addEventListener('scroll', function() {
 });
 
 setInterval(function() {
-    if(scrolled) {
-      scrolled = false;
-      watchSkillsBlocks();
-      watchProjectsBlocks();
-    }
+  if(scrolled) {
+    scrolled = false;
+    watchSkillsBlocks();
+    watchProjectsBlocks();
+  }
 }, 50);
 
 window.addEventListener('resize', function() {
