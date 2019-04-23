@@ -1,17 +1,16 @@
-let header = document.querySelector('header');
-let navLinks = document.querySelectorAll('header nav a');
-let dataMobileColor = document.querySelectorAll('[data-mobile-color]');
-let dataColor = document.querySelectorAll('[data-color]');
-let introCard = document.querySelector('section.intro .intro-card');
-let intro = document.querySelector('section.intro');
-let siteTitle = document.querySelector('section.hero h1');
-let siteSubtitle = document.querySelector('section.hero h2');
-let skillsBlocks = document.querySelectorAll('.skills-grid .columns .column .skills-grid-block');
-let projectsBlocks = document.querySelectorAll('.projects-grid .columns .projects-grid-block');
-let details = document.querySelector('.details');
-let scrolled = false;
-let headerHeight = 40;
-var lastScrollTop = 0;
+const header = document.querySelector('header');
+const navLinks = document.querySelectorAll('header nav a');
+const dataMobileColor = document.querySelectorAll('[data-mobile-color]');
+const dataColor = document.querySelectorAll('[data-color]');
+const introCard = document.querySelector('section.intro .intro-card');
+const intro = document.querySelector('section.intro');
+const siteTitle = document.querySelector('section.hero h1');
+const siteSubtitle = document.querySelector('section.hero h2');
+const skillsBlocks = document.querySelectorAll('.skills-grid .columns .column .skills-grid-block');
+const projectsBlocks = document.querySelectorAll('.projects-grid .columns .projects-grid-block');
+const details = document.querySelector('.details');
+var scrolled = false;
+var headerHeight = 40;
 
 (function () {
     if ( typeof NodeList.prototype.forEach === "function" ) return false;
@@ -52,8 +51,6 @@ function getCoords(elem) {
 
 function watchNav() {
   var scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
-  var scrollingDown = (scrollTop > lastScrollTop);
-  lastScrollTop = scrollTop;
   if (isMobile()) {
     dataMobileColor.forEach(e => {
       let topDistance = getCoords(e).top;
@@ -81,7 +78,6 @@ function watchNav() {
 
 function watchIntroCard() {
   var targetHeight = introCard.offsetHeight;
-  var distanceBetween = introCard.offsetHeight - intro.offsetHeight;
   var scrollPercent = (targetHeight - window.scrollY) / targetHeight;
   var scrollPercentReverse = (100 - (100 * scrollPercent)) / 100;
   if (scrollPercent >= 0) {
@@ -133,11 +129,11 @@ window.addEventListener('scroll', function() {
 });
 
 setInterval(function() {
-    if(scrolled) {
-      scrolled = false;
-      watchSkillsBlocks();
-      watchProjectsBlocks();
-    }
+  if(scrolled) {
+    scrolled = false;
+    watchSkillsBlocks();
+    watchProjectsBlocks();
+  }
 }, 50);
 
 window.addEventListener('resize', function() {
