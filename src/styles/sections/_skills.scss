@@ -3,6 +3,15 @@ section.skills {
   position: relative;
   padding-bottom: 15rem;
 
+  .intersect.skills {
+    position: relative;
+    top: calc(100vh - 70px);
+    width: 100%;
+    background: pink;
+    z-index: 2;
+    height: 10px;
+  }
+
   &:before {
     display:block;
     position:absolute;

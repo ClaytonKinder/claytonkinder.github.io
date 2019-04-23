@@ -4,6 +4,8 @@ const dataMobileColor = document.querySelectorAll('[data-mobile-color]');
 const dataColor = document.querySelectorAll('[data-color]');
 const introCard = document.querySelector('section.intro .intro-card');
 const intro = document.querySelector('section.intro');
+const skills = document.querySelector('section.skills');
+const projects = document.querySelector('section.projects');
 const siteTitle = document.querySelector('section.hero h1');
 const siteSubtitle = document.querySelector('section.hero h2');
 const skillsBlocks = document.querySelectorAll('.skills-grid .columns .column .skills-grid-block');
@@ -51,6 +53,7 @@ function getCoords(elem) {
 
 function watchNav() {
   var scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+  return;
   if (isMobile()) {
     dataMobileColor.forEach(e => {
       let topDistance = getCoords(e).top;
@@ -149,6 +152,132 @@ navLinks.forEach(e => {
     ele.scrollIntoView({behavior: 'smooth', block: 'start'});
   });
 });
+
+// var options = {
+//   root: document.body,
+//   rootMargin: '0px',
+//   threshold: 1.0
+// };
+
+// var callback = (entries) => {
+//   entries.forEach(entry => {
+//     console.log(entry.isIntersecting, entry);
+//     // if (entry.isIntersecting) {
+//     //   let elem = entry.target;
+
+//     //   if (entry.intersectionRatio >= 0.75) {
+//     //     intersectionCounter++;
+//     //   }
+//     // }
+//   });
+// };
+
+// var observer = new IntersectionObserver(callback);
+// observer.observe(header);
+
+const target = projects;
+
+function buildThresholdList() {
+  var thresholds = [];
+  var numSteps = 20;
+
+  for (var i=1.0; i<=numSteps; i++) {
+    var ratio = i/numSteps;
+    thresholds.push(ratio);
+  }
+
+  thresholds.push(0);
+  return thresholds;
+}
+
+// const handleIntersect = entries => {
+//   entries.forEach(entry => {
+//     const currentY = entry.boundingClientRect.y;
+//     const direction = currentY < previousY ? 'above' : 'below';
+//     console.group(`INTERSECTION ${entry.target.classList}`);
+//     console.log('entry', entry);
+//     console.log('header getBoundingClientRect', header.getBoundingClientRect());
+//     console.log('direction', direction);
+//     console.groupEnd('INTERSECTION');
+//     if (entry.target == intro) {
+//       console.log(`Intro`, entry.isIntersecting ? 'Intersecting' : 'Not intersecting', direction);
+//     } else if (entry.target == skills) {
+//       console.log(`Skills`, entry.isIntersecting ? 'Intersecting' : 'Not intersecting', direction);
+//     } else if (entry.target == projects) {
+//       console.log(`Projects`, entry.isIntersecting ? 'Intersecting' : 'Not intersecting', direction);
+//     }
+//     previousY = currentY;
+//   });
+// };
+
+let previousY = 1000;
+
+const handleIntersect = entries => {
+  entries.forEach(entry => {
+    const currentY = window.scrollY;
+    const direction = currentY < previousY ? 'up' : 'down';
+    console.log('DIRECTION', direction);
+    if (entry.target.classList.contains('skills')) {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => {
+          a.style.color = 'black';
+        });
+        console.log('Skills - text should be black');
+      } else if (direction === 'up') {
+        navLinks.forEach(a => {
+          a.style.color = 'white';
+        });
+        console.log('Skills 2 - text should be white');
+      }
+    } else if (entry.target.classList.contains('intro')) {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => {
+          a.style.color = 'white';
+        });
+        console.log('Intro 1 - text should be white');
+      } else if (direction === 'up') {
+        navLinks.forEach(a => {
+          a.style.color = 'white';
+        });
+        console.log('Intro 2 - text should be white');
+      }
+    } else if (entry.target.classList.contains('projects')) {
+      if (entry.isIntersecting) {
+        console.log('Projects 1 - text should be white');
+        navLinks.forEach(a => {
+          a.style.color = 'white';
+        });
+      } else if (direction === 'up') {
+        console.log('Projects 2 - text should be black');
+        navLinks.forEach(a => {
+          a.style.color = 'black';
+        });
+      }
+    } else if (entry.target.classList.contains('contact')) {
+      if (entry.isIntersecting) {
+        console.log('Contact 1 - text should be black');
+        navLinks.forEach(a => {
+          a.style.color = 'black';
+        });
+      } else if (direction === 'up') {
+        console.log('Contact 2 - text should be white');
+        navLinks.forEach(a => {
+          a.style.color = 'white';
+        });
+      }
+    }
+    previousY = currentY;
+  });
+};
+
+const observer = new IntersectionObserver(handleIntersect, {
+  threshold: [0]
+});
+
+observer.observe(document.querySelector('.intersect.intro'));
+observer.observe(document.querySelector('.intersect.skills'));
+observer.observe(document.querySelector('.intersect.projects'));
+observer.observe(document.querySelector('.intersect.contact'));
 
 window.onload = function() {
   imagesLoaded(document.body, () => {
