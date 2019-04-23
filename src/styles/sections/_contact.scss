@@ -1,7 +1,8 @@
 section.contact {
   position: relative;
   padding-bottom: 15rem;
-	background-color: $white;
+  background-color: $white;
+  overflow-x: hidden;
 
   #clouds {
     background-color: $primary-blue;
