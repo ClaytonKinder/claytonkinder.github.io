@@ -30,6 +30,7 @@ introWatcher.stateChange((e, f) => {
       header.classList.remove('transparent', 'red', 'blue');
       header.classList.add('red');
     } else {
+      header.classList.remove('transparent', 'red', 'blue');
       navLinks.forEach(a => {
         a.style.color = 'black';
       });
@@ -39,6 +40,7 @@ introWatcher.stateChange((e, f) => {
       header.classList.remove('transparent', 'red', 'blue');
       header.classList.add('transparent');
     } else {
+      header.classList.remove('transparent', 'red', 'blue');
       navLinks.forEach(a => {
         a.style.color = 'white';
       });
@@ -55,6 +57,7 @@ skillsWatcher.stateChange((e, f) => {
       header.classList.remove('transparent', 'red', 'blue');
       header.classList.add('red');
     } else {
+      header.classList.remove('transparent', 'red', 'blue');
       navLinks.forEach(a => {
         a.style.color = 'black';
       });
@@ -71,6 +74,7 @@ projectsWatcher.stateChange((e, f) => {
       header.classList.remove('transparent', 'red', 'blue');
       header.classList.add('blue');
     } else {
+      header.classList.remove('transparent', 'red', 'blue');
       navLinks.forEach(a => {
         a.style.color = 'white';
       });
@@ -80,6 +84,7 @@ projectsWatcher.stateChange((e, f) => {
       header.classList.remove('transparent', 'red', 'blue');
       header.classList.add('red');
     } else {
+      header.classList.remove('transparent', 'red', 'blue');
       navLinks.forEach(a => {
         a.style.color = 'black';
       });
@@ -96,6 +101,7 @@ contactWatcher.stateChange((e, f) => {
       header.classList.remove('transparent', 'red', 'blue');
       header.classList.add('blue');
     } else {
+      header.classList.remove('transparent', 'red', 'blue');
       navLinks.forEach(a => {
         a.style.color = 'black';
       });
@@ -105,6 +111,7 @@ contactWatcher.stateChange((e, f) => {
       header.classList.remove('transparent', 'red', 'blue');
       header.classList.add('blue');
     } else {
+      header.classList.remove('transparent', 'red', 'blue');
       navLinks.forEach(a => {
         a.style.color = 'white';
       });
