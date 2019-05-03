@@ -4,15 +4,6 @@ section.contact {
   background-color: $white;
   overflow-x: hidden;
 
-  .intersect.contact {
-    position: relative;
-    top: calc(100vh - 50px);
-    width: 100%;
-    background: orange;
-    z-index: 2;
-    height: 10px;
-  }
-
   #clouds {
     background-color: $primary-blue;
     min-width: 900px;

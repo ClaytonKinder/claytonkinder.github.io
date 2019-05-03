@@ -4,15 +4,6 @@ section.projects {
   padding-bottom: 15rem;
   background-color: $primary-blue;
 
-  .intersect.projects {
-    position: relative;
-    top: calc(100vh - 70px);
-    width: 100%;
-    background: yellow;
-    z-index: 2;
-    height: 10px;
-  }
-
   &:before,
   &:after {
   	top: -65px;
