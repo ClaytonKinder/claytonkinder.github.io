@@ -9,6 +9,7 @@ const intro = document.querySelector('section.intro');
 const skills = document.querySelector('section.skills');
 const projects = document.querySelector('section.projects');
 const contact = document.querySelector('section.contact');
+const hero = document.querySelector('section.hero');
 const siteTitle = document.querySelector('section.hero h1');
 const siteSubtitle = document.querySelector('section.hero h2');
 const skillsBlocks = document.querySelectorAll('.skills-grid .columns .column .skills-grid-block');
@@ -168,6 +169,13 @@ function watchIntroCard() {
   }
 };
 
+function applyHeroParallax() {
+  const targetHeight = hero.offsetHeight;
+  const scrollPercent = (targetHeight - window.scrollY) / targetHeight;
+  const scrollPercentReverse = (100 - (100 * scrollPercent)) / 100;
+  hero.style.backgroundPosition = `0% ${scrollPercentReverse * 50}%`;
+}
+
 function watchSkillsBlocks() {
   skillsBlocks.forEach(e => {
     if (isInViewport(e)) {
@@ -202,15 +210,23 @@ window.addEventListener('touchmove', function() {
   details.height = window.innerHeight;
 });
 
-window.addEventListener('scroll', function() {
+// window.addEventListener('scroll', function() {
+//   scrolled = true;
+//   watchIntroCard();
+//   applyHeroParallax();
+//   details.height = window.innerHeight;
+// });
+
+window.addEventListener('scroll', debounce(function() {
   scrolled = true;
   watchIntroCard();
-  // watchNav();
+  applyHeroParallax();
   details.height = window.innerHeight;
-});
+}), 50);
+
 
 setInterval(function() {
-  if(scrolled) {
+  if (scrolled) {
     scrolled = false;
     watchSkillsBlocks();
     watchProjectsBlocks();
@@ -233,7 +249,9 @@ navLinks.forEach(e => {
 window.onload = function() {
   imagesLoaded(document.body, () => {
     document.body.classList.add('loaded');
-    // watchNav();
+    if (/Mobi/.test(navigator.userAgent)) {
+      hero.classList.add('mobile');
+    }
     watchIntroCard();
     watchSkillsBlocks();
   });
